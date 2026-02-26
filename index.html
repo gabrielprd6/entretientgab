@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Skaelia_Entretient - Cabinet de conseil en recrutement spécialisé en Business, Conseil & IT">
+    <title>Skaelia_Entretient | Recrutement Business, Conseil & IT</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #0f172a;
+            /* Deep Slate/Navy */
+            --primary-light: #1e293b;
+            --accent: #2563eb;
+            /* Vibrant Royal Blue */
+            --accent-hover: #1d4ed8;
+            --accent-light: #eff6ff;
+            --text-dark: #0f172a;
+            --text-gray: #475569;
+            --text-light: #94a3b8;
+            --bg-white: #ffffff;
+            --bg-gray: #f8fafc;
+            --font-headings: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-gray);
+            background-color: var(--bg-white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-headings);
+            color: var(--text-dark);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Buttons --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            font-family: var(--font-headings);
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            will-change: transform;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--bg-white);
+            border: 2px solid var(--accent);
+            box-shadow: 0 4px 14px 0 rgba(37, 99, 235, 0.39);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            border-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--bg-white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-white);
+            color: var(--primary);
+            border-color: var(--bg-white);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--bg-white);
+            transform: translateY(-2px);
+        }
+
+        /* --- Reveal Animations --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 {
+            transition-delay: 100ms;
+        }
+
+        .delay-200 {
+            transition-delay: 200ms;
+        }
+
+        .delay-300 {
+            transition-delay: 300ms;
+        }
+
+        .delay-400 {
+            transition-delay: 400ms;
+        }
+
+        /* --- Header / Nav --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 5%;
+            transition: all 0.4s ease;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 15px 5%;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: var(--shadow-sm);
+        }
+
+        header.scrolled .logo,
+        header.scrolled .nav-links a {
+            color: var(--primary);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-headings);
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--bg-white);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            color: var(--bg-white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        header.scrolled .menu-toggle {
+            color: var(--text-dark);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 60px;
+            background-color: var(--primary);
+            overflow: hidden;
+        }
+
+        /* Abstract Background Effect */
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.4;
+            animation: float 10s ease-in-out infinite alternate;
+        }
+
+        .blob-1 {
+            top: -10%;
+            right: -5%;
+            width: 600px;
+            height: 600px;
+            background: linear-gradient(135deg, var(--accent), #0284c7);
+            border-radius: 50%;
+        }
+
+        .blob-2 {
+            bottom: -20%;
+            left: -10%;
+            width: 800px;
+            height: 800px;
+            background: linear-gradient(135deg, #1e3a8a, var(--primary));
+            border-radius: 50%;
+            animation-delay: -5s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 30px) scale(1.05);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: var(--bg-white);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 6vw, 5rem);
+            color: var(--bg-white);
+            margin-bottom: 24px;
+            font-weight: 800;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background-color: var(--accent);
+            opacity: 0.2;
+            z-index: -1;
+            transform: skewX(-15deg);
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.4rem);
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 400;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- Container & Layout --- */
+        .section {
+            padding: 120px 5%;
+        }
+
+        .section-light {
+            background-color: var(--bg-white);
+        }
+
+        .section-gray {
+            background-color: var(--bg-gray);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .subtitle {
+            font-family: var(--font-headings);
+            color: var(--accent);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2.2rem, 4vw, 3.5rem);
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+        }
+
+        /* --- Expertises Grid --- */
+        .expertise-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .expertise-card {
+            background: var(--bg-white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .expertise-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom right, var(--accent-light), transparent);
+            opacity: 0;
+            z-index: -1;
+            transition: var(--transition);
+        }
+
+        .expertise-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+            border-color: transparent;
+        }
+
+        .expertise-card:hover::before {
+            opacity: 1;
+        }
+
+        .expertise-icon {
+            width: 64px;
+            height: 64px;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 24px;
+            transition: var(--transition);
+        }
+
+        .expertise-card:hover .expertise-icon {
+            background-color: var(--accent);
+            color: var(--bg-white);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .expertise-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 16px;
+        }
+
+        .expertise-card p {
+            font-size: 1rem;
+            margin-bottom: 24px;
+        }
+
+        .expertise-link {
+            font-family: var(--font-headings);
+            color: var(--accent);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .expertise-link i {
+            transition: transform 0.3s;
+        }
+
+        .expertise-card:hover .expertise-link i {
+            transform: translateX(5px);
+        }
+
+        /* --- Split Section (Candidats / Entreprises) --- */
+        .split-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+
+        .split-block {
+            padding: 100px 10%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .split-block-entreprise {
+            background-color: var(--primary);
+            color: var(--bg-white);
+        }
+
+        .split-block-candidat {
+            background-color: var(--bg-gray);
+        }
+
+        .split-block h2 {
+            font-size: clamp(2rem, 3vw, 2.8rem);
+            margin-bottom: 20px;
+        }
+
+        .split-block-entreprise h2 {
+            color: var(--bg-white);
+        }
+
+        .split-block p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 450px;
+        }
+
+        .split-block .icon-bg {
+            position: absolute;
+            right: -10%;
+            bottom: -10%;
+            font-size: 350px;
+            opacity: 0.03;
+            transform: rotate(-15deg);
+        }
+
+        .split-block-entreprise .icon-bg {
+            opacity: 0.05;
+        }
+
+        /* --- Pourquoi choisir --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+        }
+
+        /* --- CTA Banner --- */
+        .cta-banner {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            color: var(--bg-white);
+            position: relative;
+            overflow: hidden;
+            margin: 60px auto 0;
+            max-width: 1200px;
+        }
+
+        .cta-banner h2 {
+            color: var(--bg-white);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-banner p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: var(--primary);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 80px 5% 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--bg-white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-col h4 {
+            color: var(--bg-white);
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul a {
+            font-size: 0.95rem;
+        }
+
+        .footer-col ul a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1400px;
+            margin: 0 auto;
+            font-size: 0.85rem;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a:hover {
+            color: var(--bg-white);
+        }
+
+        /* --- Contact Form --- */
+        .contact-section {
+            background-color: var(--bg-gray);
+        }
+
+        .contact-form-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--bg-white);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 14px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--text-dark);
+            background-color: var(--bg-gray);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            background-color: var(--bg-white);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        /* --- Media Queries --- */
+        @media (max-width: 1024px) {
+            .expertise-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+                gap: 20px;
+                box-shadow: var(--shadow-md);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            header.scrolled .nav-links {
+                background-color: var(--bg-white);
+            }
+
+            header.scrolled .nav-links a {
+                color: var(--text-dark);
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .expertise-grid,
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .split-section {
+                grid-template-columns: 1fr;
+            }
+
+            .split-block {
+                padding: 60px 5%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                Skaelia_Entretient<span class="logo-dot"></span>
+            </a>
+
+            <nav class="nav-links" id="nav-links">
+                <a href="#expertises">Expertises</a>
+                <a href="#entreprise">Entreprise</a>
+                <a href="#candidat">Candidat</a>
+                <a href="#pourquoi">À propos</a>
+            </nav>
+
+            <div class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+        <div class="hero-content reveal">
+            <div class="hero-badge">Cabinet de conseil en recrutement</div>
+            <h1>Transformez vos ambitions en <span>réussite</span> avec Skaelia_Entretient.</h1>
+            <p>Spécialisés en Business, Conseil & IT, nous connectons les talents qualifiés aux entreprises ambitieuses
+                pour relever leurs défis stratégiques.</p>
+            <div class="hero-buttons">
+                <a href="#entreprise" class="btn btn-primary">Je suis une entreprise</a>
+                <a href="#candidat" class="btn btn-secondary">Je suis un candidat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertises -->
+    <section id="expertises" class="section section-gray">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="subtitle">Nos Domaines</span>
+                <h2>Nos expertises sectorielles</h2>
+                <p>Une connaissance approfondie du marché pour des recrutements pertinents et durables.</p>
+            </div>
+
+            <div class="expertise-grid">
+                <!-- Card 1 -->
+                <div class="expertise-card reveal delay-100">
+                    <div class="expertise-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Business</h3>
+                    <p>Nous identifions les profils commerciaux, marketing et directionnels capables de propulser votre
+                        croissance et d'atteindre vos objectifs.</p>
+                    <a href="#" class="expertise-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="expertise-card reveal delay-200">
+                    <div class="expertise-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Conseil</h3>
+                    <p>Nous connectons les cabinets de conseil avec des consultants fonctionnels, métiers et
+                        stratégiques de haut niveau.</p>
+                    <a href="#" class="expertise-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="expertise-card reveal delay-300">
+                    <div class="expertise-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>IT & Technologies</h3>
+                    <p>Développeurs, architectes, chefs de projet : recrutez les profils techniques indispensables à
+                        votre transformation digitale.</p>
+                    <a href="#" class="expertise-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Split Section (Entreprise / Candidat) -->
+    <section class="split-section">
+        <!-- Entreprise -->
+        <div id="entreprise" class="split-block split-block-entreprise reveal">
+            <i class="fas fa-building icon-bg"></i>
+            <span class="subtitle" style="color:var(--bg-white); opacity:0.8;">Pour les entreprises</span>
+            <h2>Trouvez les profils qui font la différence</h2>
+            <p>Skaelia_Entretient intervient sur des secteurs stratégiques (cabinets de conseil, ESN, éditeurs de
+                logiciels, ETI et grands comptes). Nous mettons à votre service notre expertise pour identifier, attirer
+                et sélectionner vos talents qualifiés.</p>
+            <a href="#" class="btn btn-primary"
+                style="background-color: var(--bg-white); color: var(--primary); border-color: var(--bg-white);">
+                Échangez avec nos experts
+            </a>
+        </div>
+
+        <!-- Candidat -->
+        <div id="candidat" class="split-block split-block-candidat reveal">
+            <i class="fas fa-user-tie icon-bg"></i>
+            <span class="subtitle">Pour les candidats</span>
+            <h2>Accédez à des opportunités porteuses de sens</h2>
+            <p>Nous vous accompagnons pour trouver un poste parfaitement aligné avec vos compétences, vos ambitions et
+                vos objectifs de carrière, dans des environnements stimulants.</p>
+            <a href="#" class="btn btn-primary">
+                Découvrez nos offres d’emploi
+            </a>
+        </div>
+    </section>
+
+    <!-- Pourquoi nous choisir -->
+    <section id="pourquoi" class="section section-light">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="subtitle">La différence Skaelia_Entretient</span>
+                <h2>Pourquoi nous choisir ?</h2>
+                <p>Chez Skaelia_Entretient, nous savons que recruter ou trouver un emploi est un enjeu crucial.
+                    Découvrez notre méthode.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-item reveal delay-100">
+                    <div class="feature-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h3>Rigueur & qualité</h3>
+                    <p>Des recrutements durables et performants, grâce à une sélection extrêmement exigeante et
+                        personnalisée.</p>
+                </div>
+
+                <div class="feature-item reveal delay-200">
+                    <div class="feature-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Expertise sectorielle</h3>
+                    <p>Une spécialisation pointue et une connaissance approfondie des marchés Business, Conseil & l’IT.
+                    </p>
+                </div>
+
+                <div class="feature-item reveal delay-300">
+                    <div class="feature-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Approche humaine</h3>
+                    <p>Une écoute attentive, un accompagnement sur mesure et une collaboration de confiance.</p>
+                </div>
+            </div>
+
+            <div class="cta-banner reveal">
+                <div class="cta-shapes">
+                    <svg viewBox="0 0 100 100" preserveAspectRatio="none"
+                        style="position:absolute; width:100%; height:100%; opacity:0.1; fill:#ffffff;">
+                        <circle cx="90" cy="10" r="40" />
+                        <circle cx="10" cy="90" r="30" />
+                    </svg>
+                </div>
+                <h2>Prêt à relever de nouveaux défis ?</h2>
+                <p>Que vous cherchiez la perle rare pour votre équipe ou la prochaine grande étape de votre carrière,
+                    nos experts sont à votre écoute.</p>
+                <div class="hero-buttons">
+                    <a href="#" class="btn btn-secondary">Demandez une consultation gratuite</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="subtitle">Nous contacter</span>
+                <h2>Échangeons sur vos projets</h2>
+                <p>Prêt à collaborer ? Envoyez-nous un message et nous vous répondrons dans les plus brefs délais.</p>
+            </div>
+
+            <div class="contact-form-container reveal delay-100">
+                <form action="https://formsubmit.co/contact@croisia.me" method="POST">
+                    <!-- Config Formsubmit -->
+                    <input type="hidden" name="_subject" value="Nouveau message de contact - Skaelia_Entretient">
+                    <!-- Page de redirection (désactivée par défaut, ajoutez un _next si besoin) -->
+                    <!-- <input type="hidden" name="_next" value="https://votre-site.com/merci.html"> -->
+
+                    <div class="form-group">
+                        <label for="name">Nom complet *</label>
+                        <input type="text" id="name" name="name" class="form-control" required
+                            placeholder="Jean Dupont">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Adresse e-mail *</label>
+                        <input type="email" id="email" name="email" class="form-control" required
+                            placeholder="jean.dupont@exemple.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Votre message *</label>
+                        <textarea id="message" name="message" class="form-control" required
+                            placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary submit-btn">Envoyer le message <i
+                            class="fas fa-paper-plane" style="margin-left:8px;"></i></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="logo">
+                    Skaelia_Entretient<span class="logo-dot"></span>
+                </div>
+                <p>Cabinet de conseil en recrutement spécialisé en Business, Conseil & IT. Nous connectons les talents
+                    aux entreprises ambitieuses.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Entreprise</h4>
+                <ul>
+                    <li><a href="#entreprise">Trouver vos candidats</a></li>
+                    <li><a href="#pourquoi">À propos du cabinet</a></li>
+                    <li><a href="#">Tarifs</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Candidat</h4>
+                <ul>
+                    <li><a href="#candidat">Offres d’emploi</a></li>
+                    <li><a href="#candidat">Trouver votre emploi</a></li>
+                    <li><a href="#">Candidature spontanée</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Ressources</h4>
+                <ul>
+                    <li><a href="#">Actualités / Articles</a></li>
+                    <li><a href="#">Décryptez les tendances</a></li>
+                    <li><a href="#">Témoignages</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Skaelia_Entretient. Tous droits réservés.</p>
+            <div class="footer-bottom-links">
+                <a href="#">Mentions légales</a>
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Plan de site</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Animations & Interactivity Scripts -->
+    <script>
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navLinks = document.getElementById('nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const revealOptions = {
+            threshold: 0.15,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(revealCallback, revealOptions);
+
+        revealElements.forEach(el => {
+            revealObserver.observe(el);
+        });
+    </script>
+</body>
+
+</html>
